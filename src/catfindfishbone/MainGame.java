@@ -19,6 +19,8 @@ public class MainGame extends BasicGame {
 	  private Cat cat;
 	  private BackgroundMaingame bgmain;
 	  private int score;
+	private int time;
+	private boolean isGameOver = false;
 
 	public MainGame(String title) {
 		super(title);
@@ -32,6 +34,7 @@ public class MainGame extends BasicGame {
 		fishbone.draw();
 //		bgmain.draw();
 		g.drawString("" + score, 600, 0);
+		g.drawString("Time : " + (60+(time/1000)), 100, 0);
 
 		
 	}
@@ -42,7 +45,7 @@ public class MainGame extends BasicGame {
 	 //   container.getGraphics().setBackground(background); 
 		cat = new Cat(100, 100);
 		fishbone = new Fishbone(200, 200);
-		bgmain = new BackgroundMaingame(0,0);
+		bgmain = new BackgroundMaingame(-100,-100);
 	}
 
 	void updateShipMovement(Input input, int delta) {
@@ -69,9 +72,15 @@ public class MainGame extends BasicGame {
 	
 	    @Override
 	    public void update(GameContainer container, int delta) throws SlickException {
-	      Input input = container.getInput();
-	      updateShipMovement(input, delta);
-	      handleCollision();
+	      if(isGameOver == false){
+	    	  Input input = container.getInput();
+	    	  updateShipMovement(input, delta);
+	    	  handleCollision();
+	    	  time -= delta;
+	    	  if(60+(time/1000) <= 0){
+	    		  isGameOver = true;
+	      }
+	      }
 	    }
 		
 	
@@ -79,9 +88,11 @@ public class MainGame extends BasicGame {
 	public static void main(String[] args) {
 	    try {
 	      MainGame game = new MainGame("Super Ship Game");
-	      AppGameContainer appgc = new AppGameContainer(game);
-	      appgc.setDisplayMode(640, 480, false);
-	      appgc.start();
+	      AppGameContainer container = new AppGameContainer(game);
+	      container.setDisplayMode(640, 480, false);
+	//      container.setMinimumLogicUpdateInterval(800 / 60);
+	      container.setShowFPS(false);
+		  container.start();
 	    } catch (SlickException e) {
 	      e.printStackTrace();
 	    }

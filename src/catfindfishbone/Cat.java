@@ -27,6 +27,7 @@ public class Cat {
 	}
 	
 	
+	
 	public void moveLeft(int fishbonex) {
 		if((x>=0)){
 			colorsr = 450;
