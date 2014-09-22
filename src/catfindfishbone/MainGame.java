@@ -2,8 +2,10 @@ package catfindfishbone;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -15,6 +17,7 @@ public class MainGame extends BasicGame {
 
 	  private Fishbone fishbone;
 	  private Cat cat;
+	  private BackgroundMaingame bgmain;
 	  private int score;
 
 	public MainGame(String title) {
@@ -24,30 +27,36 @@ public class MainGame extends BasicGame {
 
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
+		bgmain.draw();
 		cat.draw();
 		fishbone.draw();
+//		bgmain.draw();
 		g.drawString("" + score, 600, 0);
+
 		
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
+	//    Color background = new Color(0,205,0);
+	 //   container.getGraphics().setBackground(background); 
 		cat = new Cat(100, 100);
 		fishbone = new Fishbone(200, 200);
+		bgmain = new BackgroundMaingame(0,0);
 	}
 
 	void updateShipMovement(Input input, int delta) {
 	      if (input.isKeyDown(Input.KEY_LEFT)) {
-	    	  cat.moveLeft();
+	    	  cat.moveLeft(fishbone.getCenterX());
 	      }
 	      if (input.isKeyDown(Input.KEY_RIGHT)) {
-	    	  cat.moveRight();
+	    	  cat.moveRight(fishbone.getCenterX());
 	      }
 	      if (input.isKeyDown(Input.KEY_DOWN)) {
-	    	  cat.moveDown();
+	    	  cat.moveDown(fishbone.getCenterY());
 		  }
 		  if (input.isKeyDown(Input.KEY_UP)) {
-			  cat.moveUp();
+			  cat.moveUp(fishbone.getCenterY());
 		      }
 	    }
 	
