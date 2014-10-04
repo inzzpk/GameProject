@@ -9,61 +9,65 @@ public class Cat {
 	  private Image image;
 	  private int x;
 	  private int y;
-	  private int colorsr =500;
-	  private int colorsb =500;
+	  private int colorsx ;
+	  private int colorsy ;
 	  private Fishbone fishbone;
 	 
 	  public Cat(int x, int y) throws SlickException {
 	    image = new Image("C:/Users/Lenovo/Desktop/ship.png");
+	//    image = new Image("rsc/ship.png");
 	    this.x = x;
 	    this.y = y;
 	  }
 
 	public void draw() {
-		Color color = new Color(colorsr,0,100,colorsb);
-	//	Color color = new Color(256,0,0,255);
+		Color color = new Color(0,0,0);
+		color = new Color((colorsx+colorsy),0,0);
 		image.draw(x,y,color);	
+		System.out.println(colorsx+colorsy);
 		
 	}
 	
 	
 	
+	
 	public void moveLeft(int fishbonex) {
 		if((x>=0)){
-			colorsr = 450;
+			colorsx = 255;
 			x-=1;
-			colorsr = colorsr - (Math.abs(x-fishbonex));
+			colorsx = colorsx - (Math.abs(x-fishbonex));
 			
 		}
 		
 	}
 	public void moveRight(int fishbonex) {
 		if((x<=580)){
-			colorsr = 450;
+			colorsx = 255;
 			x+=1;
-			colorsr = colorsr - (Math.abs(x-fishbonex));
+			colorsx = colorsx - (Math.abs(x-fishbonex));
 		}
 	}
 
 	public void moveDown(int fishboney) {
-		if((y<=410)){
-			colorsb = 375;
+		if((y<=580)){
+			colorsy = 255;
 			y+=1;
-		    colorsb = colorsb - ((Math.abs(y-fishboney))*(5/3));
+		    colorsy = colorsy - (Math.abs(y-fishboney));
 		 }
 		
 	}
 
 	public void moveUp(int fishboney) {
 		if((y>=0)){
-			colorsb = 375;
+			colorsy = 255;
 			y-=1;
-			colorsb = colorsb - ((Math.abs(y-fishboney))*(5/3));
+			colorsy = colorsy - (Math.abs(y-fishboney));
 		}
 	}
 
 	public boolean closeTo(int fishbonex, int fishboney) {
-		if ((fishbonex >= this.x) && (fishbonex <= this.x+64) && (fishboney >= this.y) && (fishboney <= this.y+64)) return true;
+		if ((fishbonex >= this.x-50) && (fishbonex <= this.x+50) && (fishboney >= this.y-50) && (fishboney <= this.y+50)) {
+			return true;}
 		else return false;
 	}
 	

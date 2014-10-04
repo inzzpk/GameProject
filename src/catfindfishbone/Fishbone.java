@@ -18,18 +18,18 @@ public class Fishbone {
 	 
 	  
 	  public void draw() {
-//	    image.draw(x, y);
+	    image.draw(x, y);
 	  }
 
 	  public int getCenterX() {
-		    return x + 20;
+		    return x ;
 		  }
 		  public int getCenterY() {
-		    return y + 20;
+		    return y ;
 		  }
 		  public void setPosition() {
 			  this.x = ran.nextInt(600);
-			  this.y = ran.nextInt(400);
+			  this.y = ran.nextInt(600);
 
 		  }
 
