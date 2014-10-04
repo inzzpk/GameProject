@@ -14,7 +14,8 @@ public class Cat {
 	  private Fishbone fishbone;
 	 
 	  public Cat(int x, int y) throws SlickException {
-	    image = new Image("C:/Users/Lenovo/Desktop/ship.png");
+//	    image = new Image("C:/Users/Lenovo/Desktop/ship.png");
+	    image = new Image("C:/Users/Lenovo/Desktop/HQ-Zombie.png");
 	//    image = new Image("rsc/ship.png");
 	    this.x = x;
 	    this.y = y;
@@ -41,7 +42,7 @@ public class Cat {
 		
 	}
 	public void moveRight(int fishbonex) {
-		if((x<=580)){
+		if((x<=560)){
 			colorsx = 255;
 			x+=1;
 			colorsx = colorsx - (Math.abs(x-fishbonex));
@@ -49,7 +50,7 @@ public class Cat {
 	}
 
 	public void moveDown(int fishboney) {
-		if((y<=580)){
+		if((y<=530)){
 			colorsy = 255;
 			y+=1;
 		    colorsy = colorsy - (Math.abs(y-fishboney));

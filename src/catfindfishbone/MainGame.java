@@ -20,7 +20,6 @@ import catfindfishbone.MainGame;
 
 public class MainGame extends BasicGame {
 	
-	  Font font;
 	  private Fishbone fishbone;
 	  private Cat cat;
 	  private BackgroundMaingame bgmain;
@@ -38,10 +37,8 @@ public class MainGame extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		bgmain.draw();
-//		cat.draw();
-		fishbone.draw();
 		cat.draw();
-//		monsterAnimation.draw();    
+	//	fishbone.draw();
 		g.setColor(Color.red);	    
 		g.drawString("Score : " + score, 510, 45);
 		g.drawString("Time : " + (60+(time/1000)), 100, 45);
@@ -53,8 +50,6 @@ public class MainGame extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		cat = new Cat(100, 100);
 		fishbone = new Fishbone(200, 200);
-		monster = new SpriteSheet("C:/Users/Lenovo/Desktop/sprite.png",95,100);
-		monsterAnimation = new Animation(monster,95);
 		bgmain = new BackgroundMaingame(0,0);
 	}
 
@@ -83,7 +78,7 @@ public class MainGame extends BasicGame {
 	    	time += 10000;
 	    }
 	    else{
-	//    	time -= 20; 	
+	    	time -= 20; 	
 	    }
 	    
 	  }   
