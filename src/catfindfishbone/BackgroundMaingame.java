@@ -10,7 +10,7 @@ public class BackgroundMaingame {
 		private Image image;
 
 		public BackgroundMaingame(int x, int y) throws SlickException {
-			image = new Image("C:/Users/Lenovo/Desktop/bgmainnnn.png");
+			image = new Image("res/bgmainnnn.png");
 			this.x = x;
 			this.y = y;
 		}

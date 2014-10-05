@@ -7,6 +7,8 @@ import org.newdawn.slick.SlickException;
 
 public class Fishbone {
 	
+	  public static final int WIDTH = 40;
+	  public static final int HEIGHT = 40;
 	  private Image image;
 	  public int x;
 	  public int y;
@@ -14,7 +16,7 @@ public class Fishbone {
 	  
 	  public Fishbone(int x, int y) throws SlickException {
 		setPosition();
-	    image = new Image("C:/Users/Lenovo/Desktop/gold.png");
+	    image = new Image("res/fishbone.png");
 	  }
 	 
 	  
@@ -29,8 +31,8 @@ public class Fishbone {
 		    return y;
 		  }
 		  public void setPosition() {
-			  this.x = ran.nextInt(580);
-			  this.y = ran.nextInt(580);
+			  this.x = ran.nextInt(MainGame.GAME_WIDTH-Cat.WIDTH);
+			  this.y = ran.nextInt(MainGame.GAME_HEIGHT-Cat.HEIGHT);
 
 
 		  }
