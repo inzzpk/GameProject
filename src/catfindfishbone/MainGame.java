@@ -1,18 +1,15 @@
 package catfindfishbone;
 
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.UnicodeFont;
+
 
 import catfindfishbone.Fishbone;
 import catfindfishbone.Cat;
@@ -48,7 +45,7 @@ public class MainGame extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		cat = new Cat(150, 100);
-		fishbone = new Fishbone(150, 100);
+		fishbone = new Fishbone(100, 100);
 		bgmain = new BackgroundMaingame(0,0);
 	}
 
@@ -79,7 +76,7 @@ public class MainGame extends BasicGame {
 	    if (cat.closeTo(fishbone.getCenterX(), fishbone.getCenterY())) {
 	    	fishbone.setPosition();
 	    	score += 10;
-	    	time += 10000;
+	    	time += 5000;
 	    }
 	    else{
 	    	time -= 20; 	
@@ -109,7 +106,7 @@ public class MainGame extends BasicGame {
 	      MainGame game = new MainGame("Cat Find Fishbone");
 	      AppGameContainer container = new AppGameContainer(game);
 	      container.setDisplayMode(640, 640, false);
-	//      container.setMinimumLogicUpdateInterval(800 / 60);
+	//    container.setMinimumLogicUpdateInterval(800 / 60);
 	      container.setShowFPS(false);
 		  container.start();
 	    } catch (SlickException e) {

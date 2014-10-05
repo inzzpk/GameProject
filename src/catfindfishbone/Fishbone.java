@@ -11,6 +11,7 @@ public class Fishbone {
 	  public int x;
 	  public int y;
 	  Random ran = new Random();
+	  
 	  public Fishbone(int x, int y) throws SlickException {
 		setPosition();
 	    image = new Image("C:/Users/Lenovo/Desktop/gold.png");
@@ -22,16 +23,15 @@ public class Fishbone {
 	  }
 
 	  public int getCenterX() {
-		    return x+5;
+		    return x;
 		  }
 		  public int getCenterY() {
-		    return y+4;
+		    return y;
 		  }
 		  public void setPosition() {
 			  this.x = ran.nextInt(580);
 			  this.y = ran.nextInt(580);
-		      System.out.print(x+" ");
-		      System.out.println(y);
+
 
 		  }
 

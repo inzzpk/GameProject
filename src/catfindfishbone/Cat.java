@@ -71,8 +71,6 @@ public class Cat {
 
 	public boolean closeTo(int fishbonex, int fishboney) {
 		if ((fishbonex >= this.x-75) && (fishbonex <= this.x+75) && (fishboney >= this.y-50) && (fishboney <= this.y+50)) {
-		      System.out.print(x+" ");
-		      System.out.println(y);
 			return true;}
 		else return false;
 	}
