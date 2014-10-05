@@ -26,8 +26,7 @@ public class MainGame extends BasicGame {
 	  private int score;
 	  private int time;
 	  private boolean isGameOver = false;
-	  private SpriteSheet monster;
-	  private Animation monsterAnimation;
+	  private boolean isStarted = false;
 
 	public MainGame(String title) {
 		super(title);
@@ -48,25 +47,30 @@ public class MainGame extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		cat = new Cat(100, 100);
-		fishbone = new Fishbone(200, 200);
+		cat = new Cat(150, 100);
+		fishbone = new Fishbone(150, 100);
 		bgmain = new BackgroundMaingame(0,0);
 	}
 
 	void updateShipMovement(Input input, int delta) {
 	      if (input.isKeyDown(Input.KEY_LEFT)) {
+	    	  isStarted = true;
 	    	  cat.moveLeft(fishbone.getCenterX());
 	      }
 	      if (input.isKeyDown(Input.KEY_RIGHT)) {
+	    	  isStarted = true;
 	    	  cat.moveRight(fishbone.getCenterX());
 	      }
 	      if (input.isKeyDown(Input.KEY_DOWN)) {
+	    	  isStarted = true;
 	    	  cat.moveDown(fishbone.getCenterY());
 		  }
 		  if (input.isKeyDown(Input.KEY_UP)) {
+			  isStarted = true;
 			  cat.moveUp(fishbone.getCenterY());
 		  }
 		  if (input.isKeyDown(Input.KEY_SPACE)){
+			  isStarted = true;
 			  handleCollision();
 		  }
 	    }
@@ -89,10 +93,12 @@ public class MainGame extends BasicGame {
 	    	  Input input = container.getInput();
 	    	  updateShipMovement(input, delta);
 	//    	  handleCollision();
+	    	  if(isStarted == true){
 	    	  time -= delta;
 	    	  if(60+(time/1000) <= 0){
 	    		  isGameOver = true;
 	      }
+	    	  }
 	      }
 	    }
 		
@@ -102,7 +108,6 @@ public class MainGame extends BasicGame {
 	    try {
 	      MainGame game = new MainGame("Cat Find Fishbone");
 	      AppGameContainer container = new AppGameContainer(game);
-	//      container.setDisplayMode(640, 480, false);
 	      container.setDisplayMode(640, 640, false);
 	//      container.setMinimumLogicUpdateInterval(800 / 60);
 	      container.setShowFPS(false);

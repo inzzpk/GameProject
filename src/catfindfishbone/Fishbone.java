@@ -22,14 +22,16 @@ public class Fishbone {
 	  }
 
 	  public int getCenterX() {
-		    return x ;
+		    return x+5;
 		  }
 		  public int getCenterY() {
-		    return y ;
+		    return y+4;
 		  }
 		  public void setPosition() {
-			  this.x = ran.nextInt(600);
-			  this.y = ran.nextInt(600);
+			  this.x = ran.nextInt(580);
+			  this.y = ran.nextInt(580);
+		      System.out.print(x+" ");
+		      System.out.println(y);
 
 		  }
 
