@@ -35,7 +35,7 @@ public class MainGame extends BasicGame {
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		bgmain.draw();
 		cat.draw();
-		fishbone.draw();
+	//	fishbone.draw();
 		g.setColor(Color.red);	    
 		g.drawString("Score : " + score, 510, 45);
 		g.drawString("Time : " + (60+(time/1000)), 100, 45);
