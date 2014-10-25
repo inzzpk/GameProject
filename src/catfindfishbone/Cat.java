@@ -22,7 +22,7 @@ public class Cat {
 
 	public Cat(int x, int y) throws SlickException {
 		cat = new Image("res/cat.png");
-		image = new Image("res/cat-nose.png");
+		image = new Image("res/cat-nose1.png");
 		this.x = x;
 		this.y = y;
 		sound = new Sound("res/Bonus.wav");
