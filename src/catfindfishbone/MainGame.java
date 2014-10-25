@@ -3,17 +3,19 @@ package catfindfishbone;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 import catfindfishbone.Fishbone;
 import catfindfishbone.Cat;
 import catfindfishbone.MainGame;
 
-public class MainGame extends BasicGame {
+public class MainGame extends BasicGameState {
 
 	public static final int GAME_WIDTH = 640;
 	public static final int GAME_HEIGHT = 640;
@@ -24,15 +26,15 @@ public class MainGame extends BasicGame {
 	private int time;
 	private boolean isGameOver = false;
 	private boolean isStarted = false;
-	private int button;
 
-	public MainGame(String title) {
-		super(title);
+	
+	public MainGame(int state) {
+//		super(title);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void render(GameContainer container, Graphics g)
+	public void render(GameContainer container,StateBasedGame sbg, Graphics g)
 			throws SlickException {
 		bgmain.draw();
 		bgmain.timeandscore(time, score);
@@ -44,7 +46,7 @@ public class MainGame extends BasicGame {
 	}
 
 	@Override
-	public void init(GameContainer container) throws SlickException {
+	public void init(GameContainer container,StateBasedGame sbg) throws SlickException {
 		cat = new Cat(150, 100);
 		fishbone = new Fishbone(100, 100);
 		bgmain = new BackgroundMaingame(0, 0);
@@ -72,9 +74,7 @@ public class MainGame extends BasicGame {
 			isStarted = true;
 			handleCollision(delta);
 		}
-	//	if (input.isMouseButtonDown(button)){
-			
-	//	}
+
 	}
 	
 	
@@ -99,7 +99,7 @@ public class MainGame extends BasicGame {
 	}
 
 	@Override
-	public void update(GameContainer container, int delta)
+	public void update(GameContainer container,StateBasedGame sbg, int delta)
 			throws SlickException {
 		Input input = container.getInput();
 		newGame(input, delta);
@@ -116,16 +116,24 @@ public class MainGame extends BasicGame {
 	}
 
 	public static void main(String[] args) {
-		try {
+/*		try {
 			MainGame game = new MainGame("Cat Find Fishbone");
-			AppGameContainer container = new AppGameContainer(game);
+			AppGameContainer container = new AppGameContainer((Game) game);
 			container.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
 			//container.setMinimumLogicUpdateInterval(800 / 60);
 			container.setShowFPS(false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
-		}
+		} */
+	}
+
+
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return 1;
 	}
 
 }
