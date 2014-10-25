@@ -24,6 +24,7 @@ public class MainGame extends BasicGame {
 	private int time;
 	private boolean isGameOver = false;
 	private boolean isStarted = false;
+	private int button;
 
 	public MainGame(String title) {
 		super(title);
@@ -34,11 +35,11 @@ public class MainGame extends BasicGame {
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
 		bgmain.draw();
+		bgmain.timeandscore(time, score);
 		cat.draw();
 		// fishbone.draw();
-		g.setColor(Color.red);
-		g.drawString("Score : " + score, 510, 45);
-		g.drawString("Time : " + (60 + (time / 1000)), 100, 45);
+		if(isGameOver == true)
+			bgmain.gameover();
 
 	}
 
@@ -69,8 +70,11 @@ public class MainGame extends BasicGame {
 		}
 		if (input.isKeyDown(Input.KEY_SPACE)) {
 			isStarted = true;
-			handleCollision();
+			handleCollision(delta);
 		}
+	//	if (input.isMouseButtonDown(button)){
+			
+	//	}
 	}
 	
 	
@@ -82,13 +86,14 @@ public class MainGame extends BasicGame {
 		}
 	}
 
-	private void handleCollision() {
+	private void handleCollision(int delta) {
 		if (cat.closeTo(fishbone.getCenterX(), fishbone.getCenterY())) {
 			fishbone.setPosition();
 			score += 10;
 			time += 5000;
 		} else {
-			time -= 20;
+			time -= 10;
+
 		}
 
 	}
@@ -99,9 +104,7 @@ public class MainGame extends BasicGame {
 		Input input = container.getInput();
 		newGame(input, delta);
 		if (isGameOver == false) {
-	//		Input input = container.getInput();
 			updateCatMovement(input, delta);
-			// handleCollision();
 			if (isStarted == true) {
 				time -= delta;
 				if (60 + (time / 1000) <= 0) {
