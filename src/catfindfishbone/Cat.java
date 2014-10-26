@@ -16,7 +16,6 @@ public class Cat {
 	private int y;
 	private int colorsx;
 	private int colorsy;
-	private Color color;
 	private Sound sound;
 
 	public Cat(int x, int y) throws SlickException {
@@ -32,8 +31,6 @@ public class Cat {
 		Color color = new Color(0, 0, 0);
 		color = new Color((colorsx + colorsy), 0, 0);
 		image.draw(x, y, color);
-//		System.out.println(colorsx + colorsy);
-		// System.out.println(x);
 
 	}
 

@@ -15,14 +15,12 @@ public class Menu extends BasicGameState {
 	private Image buttonimage;
 	
 	public Menu(int state){
-		
-		
+	
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg)
 			throws SlickException {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -44,8 +42,6 @@ public class Menu extends BasicGameState {
 		Input input = container.getInput();
 		int xpos = Mouse.getX();
 		int ypos = Mouse.getY();
-		System.out.println(xpos);
-		System.out.println(ypos);
 		if((xpos > 220) && (xpos < 420) && (ypos > 260) && (ypos < 300)){
 			if(input.isMouseButtonDown(0)){
 				sbg.enterState(1);
@@ -55,15 +51,12 @@ public class Menu extends BasicGameState {
 			if(input.isMouseButtonDown(0)){
 				sbg.enterState(2);
 			}
-		}
-		
-		
+		}	
 	}
 	
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	

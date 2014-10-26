@@ -40,8 +40,6 @@ public class EndGame extends BasicGameState {
 		Input input = container.getInput();
 		int xpos = Mouse.getX();
 		int ypos = Mouse.getY();
-		System.out.println(xpos);
-		System.out.println(ypos);
 		if((xpos > 95) && (xpos < 285) && (ypos > 40) && (ypos < 100)){
 			if(input.isMouseButtonDown(0)){
 				NewGameMainGame();

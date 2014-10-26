@@ -40,13 +40,10 @@ public class EndGameTime extends BasicGameState {
 		Input input = container.getInput();
 		int xpos = Mouse.getX();
 		int ypos = Mouse.getY();
-		System.out.println(xpos);
-		System.out.println(ypos);
 		if((xpos > 95) && (xpos < 285) && (ypos > 40) && (ypos < 100)){
 			if(input.isMouseButtonDown(0)){
 				NewGameMainGameTime();
-				sbg.enterState(2);
-				
+				sbg.enterState(2);			
 			}
 		}
 		if((xpos > 335) && (xpos < 535) && (ypos > 40) && (ypos < 100)){
@@ -61,7 +58,7 @@ public class EndGameTime extends BasicGameState {
 	public void NewGameMainGameTime(){
 		MainGameTime.isGameOver = false;
 		MainGameTime.isStarted = false;
-		MainGameTime.time = 00;
+		MainGameTime.time = 0;
 		MainGameTime.score = 10;
 	}
 	

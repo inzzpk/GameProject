@@ -29,8 +29,7 @@ public class MainGameTime extends BasicGameState {
 
 	
 	public MainGameTime(int state) {
-//		super(title);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
@@ -91,7 +90,6 @@ public class MainGameTime extends BasicGameState {
 	private void handleCollision(int delta) {
 		if (cat.closeTo(fishbone.getCenterX(), fishbone.getCenterY())) {
 			fishbone.setPosition();
-	//		leasttime();
 			score -= 1;
 		} else {
 			time += 10;

@@ -3,9 +3,7 @@ package catfindfishbone;
 import java.util.Random;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Sound;
 
 public class Fishbone {
 
@@ -15,16 +13,10 @@ public class Fishbone {
 	public int x;
 	public int y;
 	Random ran = new Random();
-	private Fishbone fishbone;
-	private Cat cat;
 
 	public Fishbone(int x, int y) throws SlickException {
 		setPosition();
-		image = new Image("res/fishbone.png");
-//		if (cat.closeTo(x, y)) {
-//			setPosition();
-//		}
-		
+		image = new Image("res/fishbone.png");		
 	}
 
 

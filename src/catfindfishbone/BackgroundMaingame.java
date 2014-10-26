@@ -55,17 +55,14 @@ public class BackgroundMaingame {
 
 	public void draw() {
 		image.draw(x, y);
-
 	}
 
 	public void drawtime() {
 		imagetime.draw(x, y);
-
 	}
 
 	public void play() {
 		music.loop();
-
 	}
 
 	public void gameover() {
@@ -78,8 +75,6 @@ public class BackgroundMaingame {
 		Input input = container.getInput();
 		int xpos = Mouse.getX();
 		int ypos = Mouse.getY();
-		System.out.println(xpos);
-		System.out.println(ypos);
 		if((xpos > 250) && (xpos < 390) && (ypos > 260) && (ypos < 325)){
 			if(input.isMouseButtonDown(0)){
 				sbg.enterState(3);
@@ -92,8 +87,6 @@ public class BackgroundMaingame {
 		Input input = container.getInput();
 		int xpos = Mouse.getX();
 		int ypos = Mouse.getY();
-		System.out.println(xpos);
-		System.out.println(ypos);
 		if((xpos > 250) && (xpos < 390) && (ypos > 260) && (ypos < 325)){
 			if(input.isMouseButtonDown(0)){
 				sbg.enterState(4);

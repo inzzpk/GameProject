@@ -28,8 +28,6 @@ public class MainGame extends BasicGameState {
 
 	
 	public MainGame(int state) {
-//		super(title);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
