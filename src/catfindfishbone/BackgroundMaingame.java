@@ -16,12 +16,14 @@ public class BackgroundMaingame {
 		private int x;
 		private int y;
 		private Image image;
+		private Image imagetime;
 		private Music music;
 		private TrueTypeFont font1,font2;
 		
 
 		public BackgroundMaingame(int x, int y) throws SlickException {
 			image = new Image("res/bgmainnnn.png");
+			imagetime = new Image("res/bgmainnnntime.png");
 			this.x = x;
 			this.y = y;
 			music = new Music("res/BGSound.wav");
@@ -49,6 +51,11 @@ public class BackgroundMaingame {
 			
 		}
 		
+		public void  drawtime() {
+			imagetime.draw(x, y);
+			
+		}
+		
 		public void  play() {
 			music.loop();
 			
@@ -58,10 +65,13 @@ public class BackgroundMaingame {
 		}
 		
 		public void timeandscore(int time , int score){
-//			font1.drawString(505, 40,"Score : " + score);
-//			font1.drawString(90, 40, "Time : " + (60 + (time / 1000)));	
 			font1.drawString(510, 30, "" + score);
 			font1.drawString(100, 30, "" + (60 + (time / 1000)));
+		}
+		
+		public void timeandscore_time(int time , int score){
+			font1.drawString(510, 30, "" + score);
+			font1.drawString(100, 30, "" + (time / 1000));
 		}
 
 }

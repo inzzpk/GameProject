@@ -4,6 +4,7 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -11,7 +12,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Menu extends BasicGameState {
 	
+	private Image bgimage;
+	private Image buttonimage;
+	
 	public Menu(int state){
+		
 		
 	}
 
@@ -25,8 +30,12 @@ public class Menu extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g)
 			throws SlickException {
-		g.fillOval(75, 100, 100, 100);
-		g.drawString("Play Now!", 80, 70);
+		bgimage = new Image("res/menu.png");
+		bgimage.draw();
+		buttonimage = new Image("res/button3.png");
+		buttonimage.draw(220, 330);
+		buttonimage = new Image("res/button4.png");
+		buttonimage.draw(220, 430);
 		
 	}
 
@@ -38,9 +47,14 @@ public class Menu extends BasicGameState {
 		int ypos = Mouse.getY();
 		System.out.println(xpos);
 		System.out.println(ypos);
-		if((xpos > 75) && (xpos < 175) && (ypos > 440) && (ypos < 540)){
+		if((xpos > 220) && (xpos < 420) && (ypos > 260) && (ypos < 300)){
 			if(input.isMouseButtonDown(0)){
 				sbg.enterState(1);
+			}
+		}
+		if((xpos > 220) && (xpos < 420) && (ypos > 160) && (ypos < 200)){
+			if(input.isMouseButtonDown(0)){
+				sbg.enterState(2);
 			}
 		}
 		

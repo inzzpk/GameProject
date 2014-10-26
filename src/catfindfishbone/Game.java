@@ -15,13 +15,15 @@ public class Game extends StateBasedGame {
 	public static final String GameName = "catfindfishbone";
 	public static final int menu = 0;
 	public static final int maingame = 1;
-	public static final int endgame = 2;
+	public static final int maingametime = 2;
+	public static final int endgame = 3;
 	private static String gamename;
 
 	public Game(String GameName){
 		super(gamename);
 		this.addState(new Menu(menu));
 		this.addState(new MainGame(maingame));
+		this.addState(new MainGameTime(maingametime));
 		this.addState(new EndGame(endgame));
 	}
 
@@ -30,6 +32,7 @@ public class Game extends StateBasedGame {
 	public void initStatesList(GameContainer container) throws SlickException {
 		this.getState(menu).init(container, this);
 		this.getState(maingame).init(container, this);
+		this.getState(maingametime).init(container, this);
 		this.getState(endgame).init(container, this);
 		this.enterState(menu);
 		

@@ -38,7 +38,7 @@ public class EndGame extends BasicGameState {
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 2;
+		return 3;
 	}
 	
 
