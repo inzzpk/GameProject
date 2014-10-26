@@ -1,9 +1,6 @@
 package catfindfishbone;
 
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Game;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -22,10 +19,12 @@ public class MainGame extends BasicGameState {
 	private Fishbone fishbone;
 	private Cat cat;
 	private BackgroundMaingame bgmain;
-	private int score;
-	private int time;
-	private boolean isGameOver = false;
-	private boolean isStarted = false;
+	public static int score;
+	public static int highscore = 0;
+	public static int time;
+	public static boolean isGameOver = false;
+	public static boolean isStarted = false;
+
 
 	
 	public MainGame(int state) {
@@ -40,8 +39,10 @@ public class MainGame extends BasicGameState {
 		bgmain.timeandscore(time, score);
 		cat.draw();
 		// fishbone.draw();
-		if(isGameOver == true)
+		if(isGameOver == true){
 			bgmain.gameover();
+			bgmain.gameoverbutton(container, sbg);
+		}
 
 	}
 
@@ -78,31 +79,25 @@ public class MainGame extends BasicGameState {
 	}
 	
 	
-	void newGame(Input input, int delta) {
-		if (input.isKeyDown(Input.KEY_S)) {
-			isGameOver = false;
-			time = 60;
-			score = 0;
-		}
-	}
 
 	private void handleCollision(int delta) {
 		if (cat.closeTo(fishbone.getCenterX(), fishbone.getCenterY())) {
 			fishbone.setPosition();
 			score += 10;
 			time += 5000;
+			highscore();
 		} else {
 			time -= 10;
 
 		}
 
 	}
+	
 
 	@Override
 	public void update(GameContainer container,StateBasedGame sbg, int delta)
 			throws SlickException {
 		Input input = container.getInput();
-		newGame(input, delta);
 		if (isGameOver == false) {
 			updateCatMovement(input, delta);
 			if (isStarted == true) {
@@ -114,18 +109,14 @@ public class MainGame extends BasicGameState {
 		}
 
 	}
+	
+	public void highscore(){
+		if(highscore < score){
+			highscore = score;
+		}
+	}
 
 	public static void main(String[] args) {
-/*		try {
-			MainGame game = new MainGame("Cat Find Fishbone");
-			AppGameContainer container = new AppGameContainer((Game) game);
-			container.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
-			//container.setMinimumLogicUpdateInterval(800 / 60);
-			container.setShowFPS(false);
-			container.start();
-		} catch (SlickException e) {
-			e.printStackTrace();
-		} */
 	}
 
 

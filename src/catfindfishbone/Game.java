@@ -1,9 +1,7 @@
 package catfindfishbone;
 
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -17,6 +15,7 @@ public class Game extends StateBasedGame {
 	public static final int maingame = 1;
 	public static final int maingametime = 2;
 	public static final int endgame = 3;
+	public static final int endgametime = 4;
 	private static String gamename;
 
 	public Game(String GameName){
@@ -25,6 +24,7 @@ public class Game extends StateBasedGame {
 		this.addState(new MainGame(maingame));
 		this.addState(new MainGameTime(maingametime));
 		this.addState(new EndGame(endgame));
+		this.addState(new EndGameTime(endgametime));
 	}
 
 
@@ -34,6 +34,7 @@ public class Game extends StateBasedGame {
 		this.getState(maingame).init(container, this);
 		this.getState(maingametime).init(container, this);
 		this.getState(endgame).init(container, this);
+		this.getState(endgametime).init(container, this);
 		this.enterState(menu);
 		
 	}

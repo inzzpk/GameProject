@@ -1,10 +1,7 @@
 package catfindfishbone;
 
 
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Game;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -14,7 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import catfindfishbone.Fishbone;
 import catfindfishbone.Cat;
-import catfindfishbone.MainGame;
+
 
 public class MainGameTime extends BasicGameState {
 
@@ -23,10 +20,12 @@ public class MainGameTime extends BasicGameState {
 	private Fishbone fishbone;
 	private Cat cat;
 	private BackgroundMaingame bgmain;
-	private int score = 10;
-	private int time = -60;
-	private boolean isGameOver = false;
-	private boolean isStarted = false;
+	public static int score = 10;
+	public static int time ;
+	public static int leasttime = 1000000000 ; 
+	public static boolean isGameOver = false;
+	public static boolean isStarted = false;
+
 
 	
 	public MainGameTime(int state) {
@@ -41,8 +40,10 @@ public class MainGameTime extends BasicGameState {
 		bgmain.timeandscore_time(time, score);
 		cat.draw();
 		// fishbone.draw();
-		if(isGameOver == true)
+		if(isGameOver == true){
 			bgmain.gameover();
+			bgmain.gameoverbuttontime(container, sbg);
+		}
 
 	}
 
@@ -90,11 +91,10 @@ public class MainGameTime extends BasicGameState {
 	private void handleCollision(int delta) {
 		if (cat.closeTo(fishbone.getCenterX(), fishbone.getCenterY())) {
 			fishbone.setPosition();
+	//		leasttime();
 			score -= 1;
-	//		time += 5000;
 		} else {
 			time += 10;
-
 		}
 
 	}
@@ -109,31 +109,28 @@ public class MainGameTime extends BasicGameState {
 			if (isStarted == true) {
 				time += delta;
 				if (score==0) {
+					leasttime();
 					isGameOver = true;
 				}
 			}
 		}
 
 	}
-
-	public static void main(String[] args) {
-/*		try {
-			MainGame game = new MainGame("Cat Find Fishbone");
-			AppGameContainer container = new AppGameContainer((Game) game);
-			container.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
-			//container.setMinimumLogicUpdateInterval(800 / 60);
-			container.setShowFPS(false);
-			container.start();
-		} catch (SlickException e) {
-			e.printStackTrace();
-		} */
+	
+	public void leasttime(){
+		if(leasttime > time){
+			leasttime = time;
+		}
 	}
 
+	public static void main(String[] args) {
+
+	}
 
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
+
 		return 2;
 	}
 
